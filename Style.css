@@ -1,4 +1,30 @@
-@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&display=swap');
+/*Abra seu projeto e crie um arquivo com nome: style.css
+Cole o código logo abaixo. */
+
+
+
+
+
+
+
+
+/*Esta parte indica a fonte que você vai usar no seu projeto, para conseguí-la, siga os passoa abaixo::after
+Entre no endereço abaixo
+https://fonts.google.com/
+Pesquise a fonte - nunito sans
+Clique sobre a primeira fonte encontrada
+Em seguida clique em - Get fonte
+Depois em – Get embed code
+Selecione a opção - @import
+Copie tudo (somente) dentro da tag – Style
+ */
+ @import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&display=swap');
+
+
+
+
+
+
 
 
  /*O código abaixo indica as cores que iremos utilizar no projeto
@@ -22,7 +48,7 @@
      /*O comando abaixo indicará a cor de texto a ser usado no projeto*/
      color: var(--primary-color);
      /*O comando abaixo indicará a fonte a ser usado no projeto*/
-     font: var(--font);
+     font-family: var(--font);
      /*Para usar toda a disposição da tela que temos*/
      height: 100vh;
      /*Para deixar sem margem*/
@@ -40,13 +66,11 @@
 /*Agora vamos estilizar o h1, que está dentro do header*/
 h1 {
     /*tamanho da fonte*/
-    font-size: 2 rem;
+    font-size: 2rem;
     /*cor da letra*/
     color: var(--bg-color);
     /*Peso da fonte*/
     font-weight: 700;
-
-
 }
 /*Agora vamos estilizar o Nav*/
 nav {
@@ -70,15 +94,25 @@ nav a:hover {
     /*aparece o underline*/
     text-decoration: underline;
     /*aumenta um pouco o tamanho da letra*/
-    transform: escale(0.90);
+    transform: scale(0.90);
     /*altera a velocidade*/
     transition: transform 0.1s;
 }
 
 
+
+
 .graficos-container {
     margin: 5rem;
 }
+
+
+/**Ajustando o gráfico na página**/
+.grafico {
+    margin-top: 3rem;
+}
+
+
 
 
 .graficos-container__texto {
@@ -89,16 +123,12 @@ nav a:hover {
 }
 
 
+
+
 span {
     font-weight: bold;
     color: var(--secondary-color);
 }
-
-
-
-
-
-
 /*Agora vamos estilizar o Footer*/
 footer {
     display: flex;
@@ -113,3 +143,24 @@ footer {
     /*margem superior*/
     margin-top: 2rem;
 }
+
+Common.js
+/*Para aula de hoje: criar dentro da pasta gráficos, um arquivo chamado: common.js*/
+/*Em seguida cole o código abaixo no arquivo criado*/
+/*acrescentar no arquivo index, logo após o fechamento do footer a seguinte linha de comando:
+<script type="module" src="graficos/common.js"></script>   */
+
+
+/*Tudo que for comum, vamos colocar aqui*/
+const getCSS = (variavel) => {
+    const bodyStyles = getComputedStyle(document.body)
+    return bodyStyles.getPropertyValue(variavel)
+}
+const tickConfig = {
+    family: getCSS('--font'),
+    size: 16,
+    color: getCSS('--primary-color')
+       
+}
+/*Exportar para que outros módulos possam utilizar*/
+export {getCSS, tickConfig}
